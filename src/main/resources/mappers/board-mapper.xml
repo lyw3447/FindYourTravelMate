@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Board">
+	<insert id="insertBoard">
+		insert into Travel (username, age, place, expense,
+		style, english, email, sex) values
+		(#{username} , #{age} , #{place} ,
+		#{expense}, #{style}, #{english}, #{email}, #{sex})
+	</insert>
+	<update id="updateBoard">
+		update Travel
+		set username=#{username}, age=#{age},
+		place=#{place}, expense=#{expense}, style=#{style},
+		english=#{english},
+		email=#{email}
+		where seq=#{seq}
+	</update>
+	<delete id="deleteBoard">
+		delete from Travel where seq=#{seq}
+	</delete>
+	<select id="getBoard" resultType="board">
+		select * from Travel where
+		seq=#{seq}
+	</select>
+	<select id="getBoardList" resultType="board">
+		select * from Travel order
+		by seq desc
+	</select>
+</mapper>
